@@ -6,6 +6,11 @@ import javax.swing.SwingUtilities;
 public class Main
 {
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param args
+     */
     public static void main(String[] args)
     {
         Bank bank = new Bank();
