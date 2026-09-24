@@ -15,14 +15,19 @@ public class ATM
     private final Bank bank;
     private final SecurityManager securityManager;
     private final AlertSystem alertSystem;
-    private final CurrencyConverter currencyConverter;
+    
 
     private Account currentAccount;
     private boolean isSignedIn;
 
+    // ----------------------------------------------------------
+    /**
+     * Create a new ATM object.
+     * @param bank
+     */
     public ATM(Bank bank)
     {
-        this(bank, null, null, null);
+        this(bank);
     }
 
     // ----------------------------------------------------------
