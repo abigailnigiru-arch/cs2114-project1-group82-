@@ -25,7 +25,7 @@ public class ATMStretchTest
         bank.createAccount("12345", 10_000);
         security = new SecurityManager();
         alerts = new AlertSystem();
-        atm = new ATM(bank, security, alerts, new CurrencyConverter());
+        atm = new ATM(bank, security, alerts);
     }
 
     // double verification
@@ -112,27 +112,6 @@ public class ATMStretchTest
         assertEquals(0, alerts.getSuspiciousCount("12345"));
     }
 
-    // currency conversion
-
-
-    @Test
-    public void foreignAmountIsConvertedToUsdCents()
-        throws Exception
-    {
-        assertEquals(1_000, atm.parseAmount("10 USD"));
-        assertTrue(atm.parseAmount("10 EUR") > 1_000); // 1 EUR is worth more
-                                                       // than 1 USD
-    }
-
-
-    @Test
-    public void unknownCurrencyIsRejected()
-    {
-        assertThrows(
-            UnsupportedCurrencyException.class,
-            () -> atm.parseAmount("10 XYZ"));
-    }
-
     // feature flags
 
 
@@ -140,9 +119,7 @@ public class ATMStretchTest
     public void featureFlagsReflectWhatWasPassedIn()
     {
         assertTrue(atm.isSecurityEnabled());
-        assertTrue(atm.isCurrencyEnabled());
         ATM plain = new ATM(bank);
         assertFalse(plain.isSecurityEnabled());
-        assertFalse(plain.isCurrencyEnabled());
     }
 }

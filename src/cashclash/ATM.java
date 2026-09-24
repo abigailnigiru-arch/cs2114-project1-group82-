@@ -1,11 +1,13 @@
+package cashclash;
+
 import java.util.List;
 
 /**
  * Runs the session: login, routing user choices to the right Account method,
  * and logout. Owns no banking data or banking rules itself.
  *
- * The stretch collaborators (SecurityManager, AlertSystem, CurrencyConverter)
- * are optional: pass null for any of them and that feature is simply off.
+ * The stretch collaborators (SecurityManager and AlertSystem) are optional:
+ * pass null for either one and that feature is simply off.
  * Methods return the text to show the user so the same ATM works with the
  * GUI or a console menu.
  */
@@ -14,21 +16,17 @@ public class ATM {
     private final Bank bank;
     private final SecurityManager securityManager;
     private final AlertSystem alertSystem;
-    private final CurrencyConverter currencyConverter;
-
     private Account currentAccount;
     private boolean isSignedIn;
 
     public ATM(Bank bank) {
-        this(bank, null, null, null);
+        this(bank, null, null);
     }
 
-    public ATM(Bank bank, SecurityManager securityManager, AlertSystem alertSystem,
-               CurrencyConverter currencyConverter) {
+    public ATM(Bank bank, SecurityManager securityManager, AlertSystem alertSystem) {
         this.bank = bank;
         this.securityManager = securityManager;
         this.alertSystem = alertSystem;
-        this.currencyConverter = currencyConverter;
         this.currentAccount = null;
         this.isSignedIn = false;
     }
@@ -37,10 +35,6 @@ public class ATM {
 
     public boolean isSecurityEnabled() {
         return securityManager != null;
-    }
-
-    public boolean isCurrencyEnabled() {
-        return currencyConverter != null;
     }
 
     // ---------- login / logout ----------
@@ -102,9 +96,9 @@ public class ATM {
 
     // ---------- input ----------
 
-    /** Turns raw text into cents; foreign currencies go to the converter when it is enabled. */
-    public long parseAmount(String raw) throws InvalidAmountException, UnsupportedCurrencyException {
-        return InputValidator.parseAmountCents(raw, currencyConverter);
+    /** Turns raw text into cents. */
+    public long parseAmount(String raw) throws InvalidAmountException {
+        return InputValidator.parseAmountCents(raw);
     }
 
     // ---------- transactions ----------

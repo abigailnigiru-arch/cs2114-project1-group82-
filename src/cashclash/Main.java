@@ -1,3 +1,5 @@
+package cashclash;
+
 import javax.swing.SwingUtilities;
 
 /** Wires everything together and opens the GUI. Run this class. */
@@ -19,14 +21,13 @@ public class Main
                                                 // Bank
         }
 
-        // Stretch goals: pass null in place of any of these three to switch
+        // Stretch goals: pass null in place of either collaborator to switch
         // that feature off.
         ATM atm = new ATM(
             bank,
             new SecurityManager(),
-            new AlertSystem(),
-            new CurrencyConverter());
+            new AlertSystem());
 
-        SwingUtilities.invokeLater(() -> new ATMGui(atm).setVisible(true));
+        SwingUtilities.invokeLater(() -> new ATMgui(atm).setVisible(true));
     }
 }

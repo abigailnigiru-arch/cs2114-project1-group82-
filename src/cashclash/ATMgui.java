@@ -46,7 +46,7 @@ public class ATMgui extends JFrame {
     private final JTextArea historyArea = new JTextArea();
     private final JLabel sessionStatus = new JLabel(" ");
 
-    public ATMGui(ATM atm) {
+    public ATMgui(ATM atm) {
         super("Cash Clash ATM");
         this.atm = atm;
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -147,8 +147,7 @@ public class ATMgui extends JFrame {
         buttonRow.add(withdrawButton);
 
         JPanel form = new JPanel(new GridLayout(0, 1, 6, 6));
-        form.add(new JLabel(atm.isCurrencyEnabled()
-            ? "Amount (e.g. 25.50 or 20 EUR)" : "Amount in USD (e.g. 25.50)"));
+        form.add(new JLabel("Amount (e.g. 25.50)"));
         form.add(amountField);
         form.add(typeBox);
         form.add(buttonRow);
@@ -209,8 +208,8 @@ public class ATMgui extends JFrame {
             amountField.setText("");
             refresh();
             setStatus(sessionStatus, message, true);
-        } catch (InvalidAmountException | UnsupportedCurrencyException
-                 | InsufficientFundsException | DailyLimitExceededException ex) {
+        } catch (InvalidAmountException | InsufficientFundsException
+             | DailyLimitExceededException ex) {
             refresh();
             setStatus(sessionStatus, ex.getMessage(), false);
         } catch (IllegalStateException ex) {
@@ -248,7 +247,7 @@ public class ATMgui extends JFrame {
             atm.createAccount(accountNumber, cents, new String(password.getPassword()));
             accountField.setText(accountNumber);
             setStatus(loginStatus, "Account " + accountNumber + " created. You can log in now.", true);
-        } catch (InvalidAmountException | UnsupportedCurrencyException | DuplicateAccountException ex) {
+        } catch (InvalidAmountException | DuplicateAccountException ex) {
             setStatus(loginStatus, ex.getMessage(), false);
         }
     }

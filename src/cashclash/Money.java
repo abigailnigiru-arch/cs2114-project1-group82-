@@ -1,3 +1,5 @@
+package cashclash;
+
 import java.util.Locale;
 
 /**
