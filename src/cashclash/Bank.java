@@ -9,11 +9,6 @@ public class Bank
 
     private final Map<String, Account> accounts = new HashMap<>();
 
-    public Bank()
-    {
-    }
-
-
     /**
      * Throws instead of returning null so a missing account can't slip through.
      */
