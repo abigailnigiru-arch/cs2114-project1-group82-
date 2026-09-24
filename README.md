@@ -8,12 +8,15 @@ withdrawal-limit validation.
 
 ## How to Run
 
-1. Clone or download this repository.
-2. Open Eclipse.
-3. Select File > Import > Existing Projects into Workspace.
-4. Select the project folder.
-5. Open `ATM.java` (or the class containing `main`).
-6. Select Run > Run As > Java Application.
+1. Clone the repository with GitHub Desktop.
+2. In Eclipse, select **File > Import > Existing Projects into Workspace**.
+3. Select the cloned project folder and finish the import.
+4. In the Package Explorer, expand `src/cashclash`.
+5. Right-click `Main.java` and select **Run As > Java Application**.
+
+The main class is `cashclash.Main`. A checked-in Eclipse launch configuration is
+also available in the project root; double-click `cashclash.Main.launch` if you
+want to run it directly.
 
 ## Running Tests
 
