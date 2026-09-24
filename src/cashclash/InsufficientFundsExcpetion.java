@@ -9,14 +9,15 @@ package cashclash;
  *  @author abigailnigiru
  *  @version Sep 24, 2026
  */
-public class InsufficientFundsException extends Exception {
-
+public class InsufficientFundsExcpetion extends Exception
+{
     // ----------------------------------------------------------
     /**
-     * Create a new InsufficientFundsException object.
+     * Create a new InsufficientFundsExcpetion object.
      * @param message
      */
-    public InsufficientFundsException(String message) {
+    public InsufficientFundsExcpetion(String message)
+    {
         super(message);
     }
 }

@@ -11,6 +11,9 @@ public class Bank
 
     /**
      * Throws instead of returning null so a missing account can't slip through.
+     * @param accountNumber 
+     * @return account
+     * @throws AccountNotFoundException 
      */
     public Account getAccount(String accountNumber)
         throws AccountNotFoundException
@@ -26,6 +29,14 @@ public class Bank
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param accountNumber
+     * @param initialBalanceCents
+     * @return account
+     * @throws DuplicateAccountException
+     */
     public Account createAccount(String accountNumber, long initialBalanceCents)
         throws DuplicateAccountException
     {
@@ -40,7 +51,9 @@ public class Bank
     }
 
 
-    /** Exception-free existence check. */
+    /** Exception-free existence check. 
+     * @param accountNumber 
+     * @return true  */
     public boolean accountExists(String accountNumber)
     {
         return accountNumber != null && accounts.containsKey(accountNumber);

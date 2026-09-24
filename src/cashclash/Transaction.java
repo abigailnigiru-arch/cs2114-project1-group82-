@@ -1,5 +1,3 @@
-package cashclash;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -16,6 +14,14 @@ public final class Transaction
     private final String description;
     private final LocalDateTime timestamp;
 
+    // ----------------------------------------------------------
+    /**
+     * Create a new Transaction object.
+     * @param type
+     * @param amountCents
+     * @param accountType
+     * @param description
+     */
     public Transaction(
         String type,
         long amountCents,
@@ -40,30 +46,55 @@ public final class Transaction
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return type
+     */
     public String getType()
     {
         return type;
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return amountCents
+     */
     public long getAmount()
     {
         return amountCents;
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return accountType
+     */
     public String getAccountType()
     {
         return accountType;
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return description
+     */
     public String getDescription()
     {
         return description;
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return timestamp
+     */
     public LocalDateTime getTimestamp()
     {
         return timestamp;

@@ -12,7 +12,13 @@ import java.util.List;
 public class Account
 {
 
+    /**
+     * Checkings
+     */
     public static final String CHECKING = "Checking";
+    /**
+     * Savings
+     */
     public static final String SAVINGS = "Savings";
 
     /** Bank-wide daily withdrawal cap: $500.00. */
@@ -25,7 +31,9 @@ public class Account
     private LocalDate dailyWithdrawalDate;
     private final List<Transaction> transactionHistory = new ArrayList<>();
 
-    /** Creates an account; the initial balance starts in Checking. */
+    /** Creates an account; the initial balance starts in Checking. 
+     * @param accountNumber 
+     * @param initialBalanceCents */
     public Account(String accountNumber, long initialBalanceCents)
     {
         if (initialBalanceCents < 0)
@@ -41,20 +49,28 @@ public class Account
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return accountNumber
+     */
     public String getAccountNumber()
     {
         return accountNumber;
     }
 
 
-    /** Total of checking and savings, in cents. */
+    /** Total of checking and savings, in cents. 
+     * @return getBalance*/
     public long getBalance()
     {
         return checkingCents + savingsCents;
     }
 
 
-    /** Balance of "Checking" or "Savings", in cents. */
+    /** Balance of "Checking" or "Savings", in cents. 
+     * @param accountType 
+     * @return getBalance */
     public long getBalance(String accountType)
     {
         return normalizeType(accountType).equals(CHECKING)
@@ -63,25 +79,43 @@ public class Account
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return getCheckingBalance
+     * @returncheckingCents
+     */
     public long getCheckingBalance()
     {
         return checkingCents;
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return savingsCents
+     */
     public long getSavingsBalance()
     {
         return savingsCents;
     }
 
 
-    /** Deposits into Checking. */
+    /** Deposits into Checking. 
+     * @param amountCents */
     public void deposit(long amountCents)
     {
         deposit(amountCents, CHECKING);
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param amountCents
+     * @param accountType
+     */
     public void deposit(long amountCents, String accountType)
     {
         if (amountCents <= 0)
@@ -107,7 +141,10 @@ public class Account
     }
 
 
-    /** Withdraws from Checking. */
+    /** Withdraws from Checking. 
+     * @param amountCents 
+     * @throws InsufficientFundsException 
+     * @throws DailyLimitExceededException */
     public void withdraw(long amountCents)
         throws InsufficientFundsException,
         DailyLimitExceededException
@@ -116,6 +153,14 @@ public class Account
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param amountCents
+     * @param accountType
+     * @throws InsufficientFundsException
+     * @throws DailyLimitExceededException
+     */
     public void withdraw(long amountCents, String accountType)
         throws InsufficientFundsException,
         DailyLimitExceededException
@@ -182,6 +227,11 @@ public class Account
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return withdraw total
+     */
     public long getRemainingDailyLimit()
     {
         resetDailyWithdrawalIfNewDay();

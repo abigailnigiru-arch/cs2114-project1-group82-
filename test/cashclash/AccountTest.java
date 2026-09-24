@@ -7,17 +7,32 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+// -------------------------------------------------------------------------
+/**
+ *  Tests account class
+ * 
+ *  @author abigailnigiru
+ *  @version Sep 24, 2026
+ */
 public class AccountTest
 {
 
     private Account account;
 
+    // ----------------------------------------------------------
+    /**
+     * sets up
+     */
     @BeforeEach
     public void setUp()
     {
         account = new Account("12345", 100_000); // $1,000.00 in checking
     }
 
+    // ----------------------------------------------------------
+    /**
+     * 
+     */
     // getBalance
 
 
@@ -28,6 +43,10 @@ public class AccountTest
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * empty account
+     */
     @Test
     public void newEmptyAccountHasZeroBalance()
     {
@@ -35,6 +54,10 @@ public class AccountTest
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * negative balance 
+     */
     @Test
     public void negativeInitialBalanceRejected()
     {
@@ -44,6 +67,10 @@ public class AccountTest
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * balance and savings .
+     */
     @Test
     public void getBalanceIsCheckingPlusSavings()
     {
@@ -53,6 +80,12 @@ public class AccountTest
         assertEquals(2_500, account.getSavingsBalance());
     }
 
+    // ----------------------------------------------------------
+    /**
+     * deposit
+     */
+    // ----------------------------------------------------------
+    
     // deposit
 
 
@@ -67,6 +100,10 @@ public class AccountTest
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     *deposit to savings 
+     */
     @Test
     public void depositToSavingsGoesToSavings()
     {

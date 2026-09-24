@@ -25,9 +25,9 @@ public class Main
         // that feature off.
         ATM atm = new ATM(
             bank,
-            new SecurityManager(),
-            new AlertSystem());
+            new AlertSystem(),
+            new SecurityManager());
 
-        SwingUtilities.invokeLater(() -> new ATMgui(atm).setVisible(true));
+        SwingUtilities.invokeLater(() -> new ATMGui(atm).setVisible(true));
     }
 }
