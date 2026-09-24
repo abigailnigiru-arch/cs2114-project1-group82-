@@ -1,3 +1,5 @@
+package cashclash;
+
 import java.util.List;
 
 /**
@@ -18,6 +20,11 @@ public class ATM
     private Account currentAccount;
     private boolean isSignedIn;
 
+    public ATM(Bank bank)
+    {
+        this(bank, null, null, null);
+    }
+
     // ----------------------------------------------------------
     /**
      * Create a new ATM object.
@@ -28,9 +35,14 @@ public class ATM
      */
     public ATM(Bank bank, AlertSystem alertSystem, SecurityManager securityManager)
     {
-        this.bank = bank;
-        this.securityManager = securityManager;
-        this.alertSystem = alertSystem;
+        this(bank, securityManager, alertSystem, null);
+    }
+
+
+    /** Creates an ATM with optional security and alert collaborators. */
+    public ATM(Bank bank, SecurityManager securityManager, AlertSystem alertSystem)
+    {
+        this(bank, securityManager, alertSystem, null);
     }
 
 
