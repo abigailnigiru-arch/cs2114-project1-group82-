@@ -1,10 +1,21 @@
-package cashclash;
-public class Main
-{
-    //~ Fields ................................................................
+import javax.swing.SwingUtilities;
 
-    //~ Constructors ..........................................................
+/** Wires everything together and opens the GUI. Run this class. */
+public class Main {
 
-    //~Public  Methods ........................................................
+    public static void main(String[] args) {
+        Bank bank = new Bank();
+        try {
+            // demo account: $1,000.00 checking and $500.00 savings, no password
+            Account demo = bank.createAccount("12345", 100_000);
+            demo.deposit(50_000, Account.SAVINGS);
+        } catch (DuplicateAccountException e) {
+            throw new IllegalStateException(e); // cannot happen on a brand-new Bank
+        }
 
+        // Stretch goals: pass null in place of any of these three to switch that feature off.
+        ATM atm = new ATM(bank, new SecurityManager(), new AlertSystem(), new CurrencyConverter());
+
+        SwingUtilities.invokeLater(() -> new ATMGui(atm).setVisible(true));
+    }
 }
