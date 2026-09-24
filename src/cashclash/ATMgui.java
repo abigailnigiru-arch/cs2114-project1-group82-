@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /** A simple Swing front end. All banking logic stays in ATM / Account. */
-public class ATMGui extends JFrame {
+public class ATMgui extends JFrame {
 
     private static final String LOGIN = "login";
     private static final String SESSION = "session";
